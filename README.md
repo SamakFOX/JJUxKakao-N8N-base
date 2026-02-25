@@ -78,8 +78,31 @@
 &nbsp;&nbsp;– 노드 연결선 색상 : Green 정상 실행 / Gray 미실행  
 &nbsp;&nbsp;– 메시지 알림창 : <오류, 성공, 힌트, 안내 등> 동작 중 알림사항이 팝업으로 출력되는 공간  
 
-#### [실습 1] 
+| [실습 1] Set & IF 기초 |
+|---|
 
+&nbsp;&nbsp;– 내 이력서 바탕으로 채용공고의 모집조건에 적합한지 확인 및 처리 자동화  
+
+![n8n-p1-workflow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/03-prac1-01_workflow.png)
+<details>
+    <summary>자세히보기</summary>
+  
+① Edit Fields (Set) 노드로 예시데이터 수동입력  
+![n8n-p1-setnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/04-prac-01_edit-fields_node.png)
+![n8n-p1-setedit1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/05-prac-01_edit-fields_edit1.png)
+![n8n-p1-setedit1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/06-prac-01_edit-fields_edit2.png)
+
+② Merge 노드로 데이터 병합 (전처리)
+![n8n-p1-mergenode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/07-prac-01_merge_node.png)
+![n8n-p1-mergeedit](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/08-prac-01_merge_edit.png)
+
+③ If 노드로 조건 판별
+![n8n-p1-ifnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/09-prac-01_if_node.png)
+![n8n-p1-ifedit](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/10-prac-01_if_edit.png)
+
+④ Edit Fileds (Set) 노드로 결과 단순확인
+
+</details>
 
 #### ● 1-3. 구글 API 준비 및 OAuth 준비
 &nbsp;&nbsp;① 
