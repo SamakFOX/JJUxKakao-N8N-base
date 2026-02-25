@@ -2,8 +2,8 @@
 
 > 예시 이미지 및 워크플로는 직접 작성하며, Apache2.0 라이선스에 따라 출처 표기 및 AI 학습에 이용을 금합니다.
 
-### [WELCOME] n8n이란?
-#### ● W-1. n8n 바로알기
+### [WELCOME] n8n이란?  
+#### ● W-1. n8n 바로알기  
 &nbsp;&nbsp;– n8n은 `워크플로우 자동화` 도구  
 &nbsp;&nbsp;– 각종 서비스를 코딩이 아닌 노드를 통해 연결하여 이벤트 발생 시 자동적인 처리가 진행되도록 해줌  
 &nbsp;&nbsp;– [예시] 메일 자동화 : Gmail에 메일이 도착하면 내용을 요약해 사용자에게 알람 전송  
@@ -23,9 +23,45 @@
 &nbsp;&nbsp;– `코드 노드`를 활용해 n8n에서 기본으로 지원하지 않는 기능도 구현 가능  
 
 > 요약  
-> GUI로 노드 조립을 통해 자동화를 구성해 쉽게, 코드를 몰라도 자동화 서비스를 만들 수 있음  
+> GUI로 노드 조립을 통해 자동화를 구성해 쉽게&코드를 몰라도 자동화 서비스를 만들 수 있음  
 > 무료로 사용 가능(로컬 또는 서버)  
 > 400개 이상의 앱을 노드 하나로 연결 (Google, Github, MS, Notion, Slack 등)  
+
+### ● W-3. n8n의 데이터 전달 방식  
+&nbsp;&nbsp;– n8n은 노드간 데이터를 `JSON`으로 전달  
+&nbsp;&nbsp;– JSON은 Key:Value 의 한 쌍으로 값이 전달되고 Key를 이용해 파싱  
+&nbsp;&nbsp;[예시]  
+```json
+{
+  "resultCode": "00",
+  "resultMsg": "NORMAL_SERVICE",
+  "numOfRows": 5,
+  "pageNo": 1,
+  "totalCount": 1,
+  "data": [
+    {
+      "stn_id": 21229,
+      "stn_ko": "울릉도",
+      "va_val_02": 7.1,
+      "va_val_03": "01",
+      "va_val_04": 10
+    },
+    {
+      "stn_id": 22101,
+      "stn_ko": "덕적도",
+      "va_val_02": 2.5,
+      "va_val_03": "01",
+      "va_val_04": null
+    }
+  ]
+}
+```
+### ● W-4. n8n 주요 노드  
+&nbsp;&nbsp;① Trigger 노드 : 워크플로를 시작 조건 (수동/자동)  
+&nbsp;&nbsp;② Set 노드 : 새 데이터 생성 / 기존 데이터에 정보 추가  
+&nbsp;&nbsp;③ Merge 노드 : 데이터 결합 (Append/Combine)  
+&nbsp;&nbsp;④ IF 노드 : 조건을 통한 분기 처리  
+&nbsp;&nbsp;⑤ OAuth 노드 : API 또는 서비스 접근 시 인증 처리  
 
 ---
 
@@ -42,4 +78,16 @@
 &nbsp;&nbsp;– 노드 연결선 색상 : Green 정상 실행 / Gray 미실행  
 &nbsp;&nbsp;– 메시지 알림창 : <오류, 성공, 힌트, 안내 등> 동작 중 알림사항이 팝업으로 출력되는 공간  
 
+#### [실습 1] 
+
+
+#### ● 1-3. 구글 API 준비 및 OAuth 준비
+&nbsp;&nbsp;① 
+&nbsp;&nbsp;② 
+&nbsp;&nbsp;③ 
+&nbsp;&nbsp;④ 
+&nbsp;&nbsp;⑤ 
+
 ---
+
+### [실습 1] 
