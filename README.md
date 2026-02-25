@@ -24,7 +24,7 @@
 
 ---
 
-### [1] n8n 기본기 다지기
+### [Section 01] n8n 기본기 다지기
 #### ● 1-1. n8n 가입 및 메인페이지 접속
 ![n8n-home](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/00_n8n_%EC%B4%88%EA%B8%B0%ED%8E%98%EC%9D%B4%EC%A7%80.png)
 
