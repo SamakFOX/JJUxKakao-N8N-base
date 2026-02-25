@@ -88,20 +88,35 @@
     <summary>▶️ 자세히보기</summary>
     <br>
   
-① Edit Fields (Set) 노드로 예시데이터 수동입력  
+**① Edit Fields (Set) 노드로 예시데이터 수동입력 **  
 ![n8n-p1-setnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/04-prac-01_edit-fields_node.png)
 ![n8n-p1-setedit1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/05-prac-01_edit-fields_edit1.png)
 ![n8n-p1-setedit1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/06-prac-01_edit-fields_edit2.png)
 
-② Merge 노드로 데이터 병합 (전처리)
+**② Merge 노드로 데이터 병합 (전처리)**  
 ![n8n-p1-mergenode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/07-prac-01_merge_node.png)
 ![n8n-p1-mergeedit](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/08-prac-01_merge_edit.png)
 
-③ If 노드로 조건 판별
+**③ If 노드로 조건 판별**  
 ![n8n-p1-ifnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/09-prac-01_if_node.png)
 ![n8n-p1-ifedit](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/10-prac-01_if_edit.png)
 
-④ Edit Fileds (Set) 노드로 결과 단순확인 (후처리)
+ - 필수 역량을 전부 갖춰야 하는 경우  
+```JavaScript
+{{ 
+  Array.isArray($json["보유 역량"]) &&
+  Array.isArray($json["필수 역량"]) &&
+  $json["필수 역량"].every(r => $json["보유 역량"].includes(r))
+}}
+```
+ - 필수 역량 중 하나만 갖추면 되는 경우  
+```JavaScript
+{{ 
+  $json["필수 역량"].some(r => $json["보유 역량"].includes(r))
+}}
+```
+
+**④ Edit Fileds (Set) 노드로 결과 단순확인 (후처리)**  
 
 </details>
 
