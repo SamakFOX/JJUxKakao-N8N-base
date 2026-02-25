@@ -85,7 +85,8 @@
 
 ![n8n-p1-workflow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/03-prac1-01_workflow.png)
 <details>
-    <summary>자세히보기</summary>
+    <summary>▶️ 자세히보기</summary>
+    <br>
   
 ① Edit Fields (Set) 노드로 예시데이터 수동입력  
 ![n8n-p1-setnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/04-prac-01_edit-fields_node.png)
@@ -100,7 +101,7 @@
 ![n8n-p1-ifnode](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/09-prac-01_if_node.png)
 ![n8n-p1-ifedit](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/10-prac-01_if_edit.png)
 
-④ Edit Fileds (Set) 노드로 결과 단순확인
+④ Edit Fileds (Set) 노드로 결과 단순확인 (후처리)
 
 </details>
 
