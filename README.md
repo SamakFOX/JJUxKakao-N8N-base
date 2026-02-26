@@ -78,6 +78,8 @@
 &nbsp;&nbsp;– 노드 연결선 색상 : Green 정상 실행 / Gray 미실행  
 &nbsp;&nbsp;– 메시지 알림창 : <오류, 성공, 힌트, 안내 등> 동작 중 알림사항이 팝업으로 출력되는 공간  
 
+---
+
 | [실습 1] Set & IF 기초 |
 |---|
 
@@ -120,12 +122,58 @@
 
 </details>
 
-#### ● 1-3. 구글 API 준비 및 OAuth 준비
-&nbsp;&nbsp;① 
-&nbsp;&nbsp;② 
-&nbsp;&nbsp;③ 
-&nbsp;&nbsp;④ 
-&nbsp;&nbsp;⑤ 
+---
+
+#### ● 1-2. OAuth 2.0 이란?  
+&nbsp;&nbsp;– OAuth는 회원가입 없이 인증된 웹서비스를 이용해 인증을 거치는 방식  
+&nbsp;&nbsp;– A 사이트에서 인증된 B사이트로 요청을 보내면 B에서 검증 후 확인값과 기본정보를 보내줌  
+&nbsp;&nbsp;– A 사이트 이용 가능, 미이용 시 B사이트에서 연동 해제 가능  
+
+---
+
+| [실습 2] Google Sheet API 기초 |
+|---|
+
+&nbsp;&nbsp;– 구글시트 API노드를 이용한 데이터 입력 & 로드  
+
+![n8n-p2-workflow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/11-prac-02_workflow.png)
+
+<details>
+    <summary>▶️ 자세히보기</summary>
+    <br>
+  
+**① 구글시트에서 데이터 불러오기**  
+&nbsp;&nbsp;– 신규노드에서 Google Sheets 검색 후 Get row(s) in sheet 선택  
+&nbsp;&nbsp;– Credential tot connect with를 클릭해 연결할 계정 설정 (없으면 로그인)  
+&nbsp;&nbsp;– 연결된 계정의 구글드라이브로 공유받은 문서를 Document 리스트에서 선택  
+&nbsp;&nbsp;– 선택된 Doc에서 이용할 시트명을 Sheet 리스트에서 선택  
+![n8n-p2-gsmenu1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/12-prac-02_gsheet-menu.png)
+![n8n-p2-gs_getrow1](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/13-prac-02_gs_getrow1.png)
+![n8n-p2-gs_getrow2](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/14-prac-02_gs_getrow2.png)
+**② 불러온 데이터 처리**  
+&nbsp;&nbsp;– 설정값 중 Execute Once 토글  
+&nbsp;&nbsp;&nbsp;&nbsp; ㄴ 기본설정으로는 10개의 데이터가 들어오면 10번 동작하도록 되어있으므로 1번만 동작하도록 변경  
+&nbsp;&nbsp;– 임의 조작 (ex. 입력 데이터가 몇개인지와 확인한 시간을 출력)  
+![n8n-p2-gs_readline](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/15-prac-02_edit-field_readline.png)
+```JavaScript
+// 데이터 길이(갯수) 출력 명령
+{{ $input.all().length }}
+
+// 현재 시간 출력 명령
+{{ $now.format('yyyy-MM-dd HH:mm:ss') }}
+```
+**③ 데이터 입력을 위한 샘플데이터 준비 (수동)**  
+&nbsp;&nbsp;– 작업할 대상시트의 필드명과 입력할 타이틀명이 일치해야 제대로 입력됨  
+&nbsp;&nbsp;&nbsp;&nbsp; ㄴ 다를 시 자동입력 과정에서 필드가 추가되며 포맷이 망가짐  
+![n8n-p2-gs_sampledata](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/16-prac-02_edit-field_sampledata.png)
+**④ 구글시트로 데이터 입력**  
+&nbsp;&nbsp;– 신규노드에서 Google Sheets 검색 후 Append row in sheet 선택  
+&nbsp;&nbsp;– 작업할 계정, Document, Sheet를 정확히 선택  
+&nbsp;&nbsp;– 자동입력을 원하면 Map Automatically 선택  
+![n8n-p2-gsmenu2](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/17-prac-02_gsheet-menu.png)
+![n8n-p2-gs_appendrow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/18-prac-02_gs_input.png)
+
+</details>
 
 ---
 
