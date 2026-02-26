@@ -178,4 +178,23 @@
 
 ---
 
-### [실습 1] 
+| [실습 3] Google Sheet API 응용 |
+|---|
+
+&nbsp;&nbsp;– 폼에서 입력을 받아 구글시트로 저장하기  
+
+![n8n-p3-workflow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/19-p03_workflow.png)
+
+<details>
+    <summary>▶️ 자세히보기</summary>
+    <br>
+  
+**① 폼 생성하기**  
+![n8n-p3-makeform](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/20-p03_makeform.png)
+![n8n-p3-formdata-pin](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/21-p03_formdata_pin.png)
+**② 폼 데이터를 구글시트로 입력하기**  
+![n8n-p3-workflow](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/22-p03_formdata_input.png)
+
+</details>
+
+---
