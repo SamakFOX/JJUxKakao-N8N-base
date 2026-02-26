@@ -216,3 +216,16 @@
 &nbsp;&nbsp;※ On Webhook call 노드  
 &nbsp;&nbsp;&nbsp; – 웹 소켓을 열어두고 외부에서 HTTP 요청이 들어오면 워크플로를 실행  
 
+&nbsp;&nbsp;웹훅 트리거와 응답노드  
+![n8n-webhook-trigger](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/23-webhook-example-workflow.png)  
+
+&nbsp;&nbsp;&nbsp;&nbsp; – GET : 간단한 처리, 테스트용 (URL에 데이터를 같이 전달)  
+&nbsp;&nbsp;&nbsp;&nbsp; – POST : 데이터를 받아 처리, 보안 (HTTP Body에 데이터를 JSON으로 전달)  
+
+![n8n-webhook-respond](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/24-webhook-respond.png)  
+
+&nbsp;&nbsp;&nbsp;&nbsp; – 사용자가 버튼을 누르면 해당하는 페이지를 연결해줌
+
+#### ● 1-5. HTTP Request  
+
+&nbsp;&nbsp; ★ n8n에서 지원하지 않는 기능들도 API만 있으면 이 노드로 사용이 가능
