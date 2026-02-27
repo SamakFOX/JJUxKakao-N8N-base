@@ -228,4 +228,25 @@
 
 #### ● 1-5. HTTP Request  
 
-&nbsp;&nbsp; ★ n8n에서 지원하지 않는 기능들도 API만 있으면 이 노드로 사용이 가능
+&nbsp;&nbsp; ★ n8n에서 지원하지 않는 기능들도 API만 있으면 이 노드로 사용이 가능  
+
+&nbsp;&nbsp;① [좌] 취업정보를 수집해 웹훅으로 전달(POST)하는 워크플로 / [우] 웹훅 트리거로 데이터를 저장하는 워크플로  
+![n8n-http-request](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/25-webhook-post-workflow.png)  
+
+&nbsp;&nbsp;② [좌] 데이터를 입력(테스트)하는 노드 / [우] 입력된 데이터를 정제하고 구글시트로 넘길 준비를 하는 노드  
+![n8n-http-request](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/26-webhook-post-setnode.png)  
+```JavaScript
+// 들어온 json 데이터가 어떻게 묶여있을 지 모르기 때문에 데이터 정제
+{{  $json.body.회사명 || $json.회사명 || '미입력' }}
+```
+
+&nbsp;&nbsp;③ [좌] 웹훅 트리거로 POST 연결을 하는 노드 / [우] 이벤트 발생 시 처리하는 웹훅 노드  
+![n8n-http-request](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/27-webhook-post-httptrigger.png)  
+```JavaScript
+// 이전 노드로 들어온 json 인풋을 가져오는 명령어
+{{ $json }}
+```
+
+&nbsp;&nbsp;④ 전후 데이터 변경 확인(검증)
+![n8n-http-request](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/28-webhook-post-googlesheet.png)  
+
