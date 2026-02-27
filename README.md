@@ -91,7 +91,7 @@
 &nbsp;&nbsp;– 노드 테두리 색상 : Green 정상 실행 / Red 오류 발생  
 &nbsp;&nbsp;– 노드 연결선 색상 : Green 정상 실행 / Gray 미실행  
 &nbsp;&nbsp;– 메시지 알림창 : <오류, 성공, 힌트, 안내 등> 동작 중 알림사항이 팝업으로 출력되는 공간  
-&nbsp;&nbsp;– Publish 웹에서 접속할 수 있도록 서비스 발행 (취소는 햄버거메뉴의 Unpublish 클릭)
+&nbsp;&nbsp;– Publish : 웹에서 접속할 수 있도록 서비스 발행 (취소는 햄버거메뉴의 Unpublish 클릭)
 
 ---
 
