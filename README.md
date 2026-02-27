@@ -263,3 +263,121 @@
 &nbsp;&nbsp;④ 전후 데이터 변경 확인(검증)
 ![n8n-http-request](https://github.com/SamakFOX/JJUxKakao-N8N-base/blob/main/images/28-webhook-post-googlesheet.png)  
 
+---
+### [Section 02] n8n 중급 - 코드노드 활용하기  
+### ● 2-1. Code 노드  
+
+<details>
+    <summary>▶️ 'Code in JavaScript 노드 내부 구문' 자세히보기</summary>
+    <br>
+
+```JavaScript
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const items = $input.all();
+
+// KST기준 오늘날짜 확인
+function getTodayStartInKST() {
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+  const y = parts.find(p => p.type === 'year')?.value;
+  const m = parts.find(p => p.type === 'month')?.value;
+  const d = parts.find(p => p.type === 'day')?.value;
+  
+  return new Date(`${y}-${m}-${d}T00:00:00+09:00`);
+}
+
+function parseDateStartInKST(yyyyMmDd) {
+  if (!yyyyMmDd || typeof yyyyMmDd !== 'string') return null;
+  const s = yyyyMmDd.trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
+  return new Date(`${s}T00:00:00+09:00`);
+}
+
+// 회사명 정리: 회사명만 남도록 (공백제거)
+function cleanCompanyName(name) {
+  if (name == null) return name;
+  let s = String(name);
+  
+  s = s
+    .replace(/\( *주 *\)/g, '')
+    .replace(/\( *유 *\)/g, '')
+    .replace(/㈜/g, '')
+    .replace(/\b주식회사\b/g, '')
+    .replace(/\b유한회사\b/g, '');
+  s = s.replace(/\(\s*\)/g, '');
+  s = s.replace(/\s+/g, ' ').trim();
+
+  return s;
+}
+
+// 연봉범위 : 연봉 상하한액으로 분리 (기준:구분기호, 단위기호 제거)
+function parseSalaryRange(rangeStr) {
+  if (!rangeStr || typeof rangeStr !== 'string') {
+    return { min: null, max: null, unit: null, raw: rangeStr ?? null };
+  }
+
+  const raw = rangeStr.trim();
+  const normalized = raw.replace(/,/g, '');
+
+  let unit = null;
+  if (normalized.includes('만원')) unit = '만원';
+  else if (normalized.includes('원')) unit = '원';
+
+  const tmp = normalized.replace(/–|—|-/g, '~');
+  const parts = tmp.split('~').map(v => v.trim()).filter(Boolean);
+  const toNum = (s) => {
+    const m = String(s).match(/(\d+(\.\d+)?)/);
+    return m ? Number(m[1]) : null;
+  };
+
+  const min = parts[0] ? toNum(parts[0]) : null;
+  const max = parts[1] ? toNum(parts[1]) : null;
+
+  return { min, max, unit, raw };
+}
+
+// 자격요건 : 배열로 분리
+function parseQualifications(qStr) {
+  if (qStr == null) return [];
+  return String(qStr)
+    .split(',')
+    .map(v => v.trim())
+    .filter(v => v.length > 0);
+}
+
+const todayKST = getTodayStartInKST();
+
+return items.map((item) => {
+  const j = item.json ?? {};
+  const cleanedCompany = cleanCompanyName(j["회사명"]);
+  const deadlineDate = parseDateStartInKST(j["마감일"]);
+  let remainingDays = null;
+  let ddayLabel = null;
+
+  if (deadlineDate) {
+    remainingDays = Math.round((deadlineDate.getTime() - todayKST.getTime()) / MS_PER_DAY);
+    
+    if (remainingDays >= 0) ddayLabel = `D-${remainingDays}`;
+    else ddayLabel = `D+${Math.abs(remainingDays)}`;
+  }
+  const salary = parseSalaryRange(j["연봉범위"]);
+  const qualificationsArray = parseQualifications(j["자격요건"]);
+
+  return {
+    json: {
+      ...j,
+      회사명_정리: cleanedCompany,
+      Dday_표기: ddayLabel,
+      연봉_최소: salary.min,
+      연봉_최대: salary.max,
+      자격요건_Array: qualificationsArray,
+    },
+  };
+});
+```
+</details>
